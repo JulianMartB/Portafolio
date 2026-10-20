@@ -1,0 +1,435 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Julián Martínez · Portafolio</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Portafolio de Julián David Martínez Benavides, estudiante de Diseño Industrial e Ingeniería de Sistemas.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Figtree:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: pantalla dividida — panel fijo de presentación a la izquierda, proyectos a la derecha; en celular se apilan. */
+:root{
+  --paper:#efeeeb;      /* fondo, gris cálido muy claro */
+  --panel:#e4e1db;      /* panel de presentación */
+  --ink:#1a1816;        /* sumi, texto principal */
+  --muted:#645e57;      /* texto secundario */
+  --line:#cfcac2;       /* divisiones */
+  --accent:#9a6b3c;     /* roble, de la tabla del organizador */
+  --accent-soft:#e8dccd;
+  --card:#f7f6f3;
+  --display:"Bricolage Grotesque", "Avenir Next", "Segoe UI", system-ui, sans-serif;
+  --body:"Figtree", "Segoe UI", system-ui, sans-serif;
+  --mono:"JetBrains Mono", ui-monospace, "Cascadia Mono", Consolas, monospace;
+  --gutter:clamp(16px, 3.2vw, 44px);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#161412; --panel:#1d1a17; --ink:#ece8e2; --muted:#a39b91; --line:#322d28;
+    --accent:#c9965f; --accent-soft:#3a2c1f; --card:#211e1a; color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#161412; --panel:#1d1a17; --ink:#ece8e2; --muted:#a39b91; --line:#322d28;
+  --accent:#c9965f; --accent-soft:#3a2c1f; --card:#211e1a; color-scheme:dark;
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} *{transition:none!important;animation:none!important} }
+body{
+  margin:0; background:var(--paper); color:var(--ink);
+  font-family:var(--body); font-size:16px; line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--accent); outline-offset:3px; border-radius:4px}
+h1,h2,h3{font-family:var(--display); text-wrap:balance; margin:0; font-weight:800; letter-spacing:-0.02em}
+.label{font-family:var(--mono); font-size:11.5px; letter-spacing:.08em; text-transform:uppercase; color:var(--muted)}
+
+/* ---------- Split ---------- */
+.split{display:grid; grid-template-columns:minmax(340px, 42%) 1fr; min-height:100vh}
+.me{
+  position:sticky; top:0; height:100vh; overflow-y:auto;
+  background:var(--panel); border-right:1px solid var(--line);
+  padding-block:clamp(28px, 5vh, 56px);
+  padding-left:max(var(--gutter), env(safe-area-inset-left, 0px));
+  padding-right:var(--gutter);
+  display:flex; flex-direction:column; gap:28px;
+}
+.waves{ /* olas seigaiha, discretas, al pie del panel */
+  margin-top:auto; flex:none; height:60px; opacity:.35;
+  background-color:var(--accent);
+  -webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='20'%3E%3Cg fill='none' stroke='black' stroke-width='1.1'%3E%3Ccircle cx='20' cy='20' r='18'/%3E%3Ccircle cx='20' cy='20' r='13'/%3E%3Ccircle cx='20' cy='20' r='8'/%3E%3Ccircle cx='0' cy='10' r='18'/%3E%3Ccircle cx='0' cy='10' r='13'/%3E%3Ccircle cx='0' cy='10' r='8'/%3E%3Ccircle cx='40' cy='10' r='18'/%3E%3Ccircle cx='40' cy='10' r='13'/%3E%3Ccircle cx='40' cy='10' r='8'/%3E%3C/g%3E%3C/svg%3E") repeat bottom left / 40px 20px;
+          mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='20'%3E%3Cg fill='none' stroke='black' stroke-width='1.1'%3E%3Ccircle cx='20' cy='20' r='18'/%3E%3Ccircle cx='20' cy='20' r='13'/%3E%3Ccircle cx='20' cy='20' r='8'/%3E%3Ccircle cx='0' cy='10' r='18'/%3E%3Ccircle cx='0' cy='10' r='13'/%3E%3Ccircle cx='0' cy='10' r='8'/%3E%3Ccircle cx='40' cy='10' r='18'/%3E%3Ccircle cx='40' cy='10' r='13'/%3E%3Ccircle cx='40' cy='10' r='8'/%3E%3C/g%3E%3C/svg%3E") repeat bottom left / 40px 20px;
+}
+
+.id{display:flex; gap:20px; align-items:center}
+.photo{
+  width:96px; height:96px; flex:none; border-radius:50%; overflow:hidden;
+  background:var(--accent-soft); color:var(--accent);
+  display:grid; place-items:center; font-family:var(--display); font-weight:800; font-size:30px;
+}
+.photo img{width:100%; height:100%; object-fit:cover; display:block}
+.id h1{font-size:clamp(28px, 3vw, 38px); line-height:1.05}
+.id .role{margin-top:6px; color:var(--muted); font-size:14.5px; line-height:1.4}
+
+.bio{font-size:17px; max-width:46ch; margin:0}
+.bio strong{font-weight:600; color:var(--accent)}
+
+.facts{display:grid; gap:18px; margin:0}
+.facts > div{display:grid; grid-template-columns:110px 1fr; gap:12px; padding-top:14px; border-top:1px solid var(--line)}
+.facts dt{padding-top:3px}
+.facts dd{margin:0; font-size:15px; min-width:0}
+.facts dd span{color:var(--muted)}
+.chips{display:flex; flex-wrap:wrap; gap:6px}
+.chips li{list-style:none; font-size:13px; padding:3px 10px; border:1px solid var(--line); border-radius:99px; background:var(--card)}
+.chips{padding:0; margin:0}
+
+.contact{display:flex; flex-wrap:wrap; gap:10px; align-items:center}
+.btn{
+  display:inline-flex; align-items:center; gap:8px; text-decoration:none;
+  font-weight:600; font-size:14.5px; padding:10px 16px; border-radius:8px;
+  border:1px solid var(--ink); transition:background .15s, color .15s;
+}
+.btn.primary{background:var(--ink); color:var(--paper)}
+.btn:hover{background:var(--accent); border-color:var(--accent); color:var(--paper)}
+.mail{font-family:var(--mono); font-size:13.5px; color:var(--muted); user-select:all; overflow-wrap:anywhere}
+
+/* ---------- Proyectos ---------- */
+.work{
+  padding-block:clamp(28px, 5vh, 56px);
+  padding-left:var(--gutter);
+  padding-right:max(var(--gutter), env(safe-area-inset-right, 0px));
+  display:flex; flex-direction:column; gap:clamp(36px, 6vh, 64px); min-width:0;
+}
+.work-head{display:flex; justify-content:space-between; align-items:baseline; gap:16px; flex-wrap:wrap}
+.work-head h2{font-size:15px; font-family:var(--mono); font-weight:500; letter-spacing:.08em; text-transform:uppercase}
+
+.projects{display:flex; flex-direction:column; gap:clamp(36px, 6vh, 64px)}
+.project{
+  display:grid; gap:16px; text-align:left; width:100%;
+  background:none; border:0; padding:0; color:inherit; font:inherit; cursor:pointer;
+}
+.project .cover{
+  position:relative; overflow:hidden; border-radius:10px; aspect-ratio:4/3; max-width:100%;
+  background:var(--card);
+}
+.project .cover img{width:100%; height:100%; object-fit:cover; display:block; transition:transform .6s cubic-bezier(.2,.7,.2,1)}
+.project:hover .cover img{transform:scale(1.035)}
+.project .open{
+  position:absolute; right:14px; bottom:14px; font-family:var(--mono); font-size:12px;
+  background:var(--paper); color:var(--ink); padding:6px 11px; border-radius:99px;
+  transition:background .15s, color .15s;
+}
+.project:hover .open{background:var(--accent); color:var(--paper)}
+.project .meta{display:grid; grid-template-columns:1fr auto; gap:4px 20px; align-items:baseline}
+.project h3{font-size:clamp(24px, 2.4vw, 32px); line-height:1.1}
+.project p{grid-column:1 / -1; margin:0; color:var(--muted); max-width:60ch}
+
+.foot{color:var(--muted); font-size:13px; border-top:1px solid var(--line); padding-top:18px}
+
+/* ---------- Caso de estudio (panel superpuesto) ---------- */
+.case{
+  position:fixed; inset:0; z-index:50; background:var(--paper); overflow-y:auto;
+  overscroll-behavior:contain;
+}
+.case-bar{
+  position:sticky; top:0; z-index:2; background:var(--paper); border-bottom:1px solid var(--line);
+  display:flex; justify-content:space-between; align-items:center; gap:12px;
+  padding-block:calc(12px + env(safe-area-inset-top, 0px)) 12px;
+  padding-left:max(var(--gutter), env(safe-area-inset-left, 0px));
+  padding-right:max(var(--gutter), env(safe-area-inset-right, 0px));
+}
+.close{
+  font:600 14px var(--body); color:var(--ink); background:var(--card); border:1px solid var(--line);
+  border-radius:8px; padding:8px 14px; cursor:pointer;
+}
+.close:hover{border-color:var(--ink)}
+.case-body{
+  max-width:1180px; margin:0 auto;
+  padding-block:clamp(28px, 5vh, 56px) calc(56px + env(safe-area-inset-bottom, 0px));
+  padding-left:max(var(--gutter), env(safe-area-inset-left, 0px));
+  padding-right:max(var(--gutter), env(safe-area-inset-right, 0px));
+  display:grid; grid-template-columns:minmax(0, 5fr) minmax(0, 7fr); gap:clamp(28px, 5vw, 72px); align-items:start;
+}
+.case-text{position:sticky; top:84px; display:grid; gap:22px; min-width:0}
+.case-text h2{font-size:clamp(32px, 4vw, 52px); line-height:1}
+.case-text .lede{font-size:18px; margin:0; max-width:52ch}
+.case-text h4{font-family:var(--mono); font-weight:500; font-size:11.5px; letter-spacing:.08em; text-transform:uppercase; color:var(--accent); margin:0 0 6px}
+.case-text section p{margin:0; max-width:56ch}
+.case-text ul{margin:0; padding-left:18px; display:grid; gap:4px}
+.specs{display:grid; grid-template-columns:auto 1fr; gap:8px 18px; margin:0; padding:16px 0 0; border-top:1px solid var(--line); font-size:14.5px}
+.specs dt{font-family:var(--mono); font-size:12px; color:var(--muted); padding-top:2px}
+.specs dd{margin:0}
+.gallery{display:grid; grid-template-columns:1fr 1fr; gap:14px; min-width:0}
+.gallery figure{margin:0; display:grid; gap:6px; min-width:0}
+.gallery figure.wide{grid-column:1 / -1}
+.gallery img{width:100%; height:auto; display:block; border-radius:8px; background:var(--card)}
+.gallery figcaption{font-size:13px; color:var(--muted)}
+
+/* ---------- PC: los tres proyectos visibles a la vez ---------- */
+@media (min-width: 901px){
+  .work{height:100vh; min-height:620px; gap:20px}
+  .projects{flex:1; min-height:0; display:grid; grid-template-rows:repeat(3, minmax(0, 1fr)); gap:18px}
+  .project{grid-template-columns:minmax(0, 1.35fr) minmax(0, 1fr); align-items:center; gap:clamp(18px, 2.4vw, 32px); min-height:0; height:100%}
+  .project .cover{aspect-ratio:auto; height:100%; min-height:0}
+  .project .meta{grid-template-columns:1fr; gap:8px; align-content:center}
+  .project .meta .label{order:-1}
+  .project h3{font-size:clamp(20px, 1.9vw, 28px)}
+  .project p{font-size:14.5px; line-height:1.5; display:-webkit-box; -webkit-line-clamp:4; -webkit-box-orient:vertical; overflow:hidden}
+  .project .open{right:10px; bottom:10px; font-size:11.5px}
+  .foot{padding-top:12px}
+}
+
+/* ---------- Celular / tablet ---------- */
+@media (max-width: 900px){
+  .split{grid-template-columns:1fr}
+  .me{position:static; height:auto; overflow:visible; border-right:0; border-bottom:1px solid var(--line); padding-right:max(var(--gutter), env(safe-area-inset-right, 0px))}
+  .work{padding-left:max(var(--gutter), env(safe-area-inset-left, 0px))}
+  .case-body{grid-template-columns:1fr}
+  .case-text{position:static}
+}
+@media (max-width: 520px){
+  .facts > div{grid-template-columns:1fr; gap:6px}
+  .gallery{grid-template-columns:1fr}
+  .id{align-items:flex-start}
+  .photo{width:76px; height:76px; font-size:24px}
+}
+</style>
+</head>
+<body>
+
+
+<div class="split">
+
+  <!-- ===================== MITAD 1: QUIÉN SOY ===================== -->
+  <aside class="me" aria-label="Presentación">
+    <div class="id">
+      <div class="photo"><img src="img/yo.jpg" alt="Foto de Julián Martínez"></div>
+      <div>
+        <h1>Julián David Martínez Benavides</h1>
+        <div class="role">Diseño Industrial · Uninorte<br>Ingeniería de Sistemas · CUL</div>
+      </div>
+    </div>
+
+    <p class="bio">Diseño objetos pensados para <strong>fabricarse de verdad</strong>. Junto el diseño industrial con la ingeniería: modelo en CAD, presento en render, imprimo, ensamblo y, cuando hace falta, programo y diseño la electrónica.</p>
+
+    <dl class="facts">
+      <div>
+        <dt class="label">Herramientas</dt>
+        <dd>
+          <ul class="chips">
+            <li>Autodesk Inventor</li><li>Blender</li><li>Impresión 3D FDM</li><li>CNC</li><li>Diseño de PCB</li><li>Firmware</li><li>Programación</li>
+          </ul>
+        </dd>
+      </div>
+      <div>
+        <dt class="label">Formación</dt>
+        <dd>Diseño Industrial, Universidad del Norte <span>· en curso</span><br>Ingeniería de Sistemas, CUL <span>· en curso</span></dd>
+      </div>
+      <div>
+        <dt class="label">Investigación</dt>
+        <dd>Programa Delfín: celda robótica que automatiza la impresión 3D y detecta fallas con visión por computador</dd>
+      </div>
+      <div>
+        <dt class="label">Experiencia</dt>
+        <dd>Freelance de impresión 3D: modelado y fabricación por encargo<br>Global Peer Educator en la CUL: clases de alemán</dd>
+      </div>
+      <div>
+        <dt class="label">Idiomas</dt>
+        <dd>Español <span>· nativo</span> &nbsp; Inglés <span>· B2</span> &nbsp; Alemán</dd>
+      </div>
+    </dl>
+
+    <div class="contact">
+      <a class="btn primary" href="cv.pdf" target="_blank" rel="noopener">Hoja de vida (PDF)</a>
+      <a class="btn" href="mailto:juliandm2004@gmail.com">Escríbeme</a>
+      <span class="mail">juliandm2004@gmail.com</span>
+    </div>
+    <div class="waves" aria-hidden="true"></div>
+  </aside>
+
+  <!-- ===================== MITAD 2: PROYECTOS ===================== -->
+  <main class="work">
+    <div class="work-head">
+      <h2>Proyectos</h2>
+      <span class="label">Barranquilla, Colombia</span>
+    </div>
+
+    <div class="projects">
+    <button class="project" data-case="parlante" aria-label="Ver proyecto: Parlante de escritorio">
+      <div class="cover">
+        <img src="img/parlante-colores.jpg" alt="Tres parlantes de escritorio en blanco y verde, crema y gris, y negro y naranja" loading="eager">
+        <span class="open">Ver proceso →</span>
+      </div>
+      <div class="meta">
+        <h3>Parlante de escritorio</h3>
+        <span class="label">Producto · Audio</span>
+        <p>Carcasa impresa en 3D para un driver y una placa Bluetooth dados. Cámara acústica separada de la electrónica y color por piezas, sin cambio de filamento.</p>
+      </div>
+    </button>
+
+    <button class="project" data-case="organizador" aria-label="Ver proyecto: Organizador de escritorio modular">
+      <div class="cover">
+        <img src="img/org-render.jpg" alt="Organizador de escritorio negro con tabla de madera, portalápices con patrón de olas, bandeja y soporte de celular" loading="eager">
+        <span class="open">Ver proceso →</span>
+      </div>
+      <div class="meta">
+        <h3>Organizador modular</h3>
+        <span class="label">Producto · Escritorio</span>
+        <p>Tabla de madera sobre patas impresas con patrón seigaiha. Las esquinas de las patas sobresalen para recibir módulos intercambiables.</p>
+      </div>
+    </button>
+
+    <button class="project" data-case="lancha" aria-label="Ver proyecto: Réplica a escala de lancha">
+      <div class="cover">
+        <img src="img/lancha-par.jpg" alt="Dos réplicas a escala de una lancha, una azul y blanca y otra negra y roja, sobre bases de exhibición" loading="eager">
+        <span class="open">Ver proceso →</span>
+      </div>
+      <div class="meta">
+        <h3>Réplica a escala de lancha</h3>
+        <span class="label">Encargo freelance · 2024</span>
+        <p>De fotos de una lancha real a dos réplicas impresas en 3D, con interior, motor fuera de borda y base de exhibición.</p>
+      </div>
+    </button>
+
+    </div>
+
+    <div class="foot">© 2026 Julián David Martínez Benavides</div>
+  </main>
+</div>
+
+<!-- ===================== CASOS DE ESTUDIO ===================== -->
+<div class="case" id="case-parlante" role="dialog" aria-modal="true" aria-labelledby="t-parlante" hidden>
+  <div class="case-bar"><span class="label">Producto · Audio</span><button class="close" data-close>← Volver</button></div>
+  <div class="case-body">
+    <div class="case-text">
+      <h2 id="t-parlante">Parlante de escritorio</h2>
+      <p class="lede">El encargo: diseñar la carcasa para dos componentes que ya existían, un driver de rango completo y una placa amplificadora Bluetooth.</p>
+      <section>
+        <h4>Decisiones</h4>
+        <ul>
+          <li>Forma de arco inspirada en las radios de mesa, con el driver centrado en la cara frontal.</li>
+          <li>Dos cámaras: arriba la caja acústica cerrada para el driver; abajo la placa, la perilla de volumen y la entrada de corriente.</li>
+          <li>El color va en piezas separadas (anillo de la rejilla, banda y perilla), así cada pieza se imprime de un solo color sin AMS y salen variantes con solo cambiar el filamento.</li>
+          <li>Tapa trasera con pines de alineación y base sujeta con tornillos largos que atraviesan el cuerpo.</li>
+        </ul>
+      </section>
+      <dl class="specs">
+        <dt>Componentes</dt><dd>Dayton Audio PC68-4 · placa ZK-1001B</dd>
+        <dt>Alimentación</dt><dd>Adaptador de pared</dd>
+        <dt>Fabricación</dt><dd>FDM, Bambu Lab A1 mini</dd>
+        <dt>Software</dt><dd>Autodesk Inventor (CAD) · Blender (render)</dd>
+      </dl>
+    </div>
+    <div class="gallery">
+      <figure class="wide"><img src="img/parlante-frente.jpg" alt="Vista frontal del parlante crema con rejilla gris" loading="lazy"><figcaption>Vista frontal, variante crema y gris.</figcaption></figure>
+      <figure><img src="img/parlante-explosionado.jpg" alt="Vista explosionada del parlante" loading="lazy"><figcaption>Explosionado: tapa, cuerpo, driver, rejilla, banda, placa y base.</figcaption></figure>
+      <figure><img src="img/parlante-corte.jpg" alt="Corte del parlante mostrando la cámara acústica y la placa" loading="lazy"><figcaption>Corte: cámara acústica arriba, electrónica abajo.</figcaption></figure>
+      <figure class="wide"><img src="img/parlante-detalle.jpg" alt="Detalle de la perilla de volumen y la entrada" loading="lazy"><figcaption>Perilla de volumen y entrada en la banda inferior.</figcaption></figure>
+      <figure class="wide"><img src="img/parlante-colores.jpg" alt="Tres variantes de color del parlante" loading="lazy"><figcaption>Tres variantes de color con la misma geometría.</figcaption></figure>
+    </div>
+  </div>
+</div>
+
+<div class="case" id="case-organizador" role="dialog" aria-modal="true" aria-labelledby="t-organizador" hidden>
+  <div class="case-bar"><span class="label">Producto · Escritorio</span><button class="close" data-close>← Volver</button></div>
+  <div class="case-body">
+    <div class="case-text">
+      <h2 id="t-organizador">Organizador modular</h2>
+      <p class="lede">Empezó como un portalápices con el patrón japonés de olas seigaiha y creció hasta un sistema para ordenar el escritorio.</p>
+      <section>
+        <h4>Decisiones</h4>
+        <ul>
+          <li>Una tabla de madera común como pieza principal: lo impreso queda en las uniones y los accesorios, donde la impresión 3D rinde más.</li>
+          <li>Patas de perfil en L hueco que abrazan la tabla. Sus esquinas sobresalen por encima y sirven de tope para encajar los módulos.</li>
+          <li>Módulos intercambiables: portalápices, bandeja y soporte de celular.</li>
+          <li>Rejilla de alambre bajo la tabla, sujeta con clips, para hojas y papeles.</li>
+          <li>Prototipos rápidos de las patas para probar el encaje antes de imprimir la versión final.</li>
+        </ul>
+      </section>
+      <dl class="specs">
+        <dt>Materiales</dt><dd>PLA negro · tabla de madera · alambre</dd>
+        <dt>Fabricación</dt><dd>FDM, Bambu Lab A1 mini</dd>
+        <dt>Patrón</dt><dd>Seigaiha (青海波), olas en relieve</dd>
+        <dt>Software</dt><dd>Autodesk Inventor (CAD) · Blender (render)</dd>
+      </dl>
+    </div>
+    <div class="gallery">
+      <figure class="wide"><img src="img/org-render.jpg" alt="Render del organizador completo" loading="lazy"><figcaption>Sistema completo con portalápices, bandeja y soporte de celular.</figcaption></figure>
+      <figure class="wide"><img src="img/org-pata.jpg" alt="Detalle de la pata con patrón seigaiha" loading="lazy"><figcaption>Pata en L con el patrón seigaiha y la esquina que recibe los módulos.</figcaption></figure>
+      <figure><img src="img/org-foto.jpg" alt="Tabla con bandeja montada sobre la pata" loading="lazy"><figcaption>Bandeja montada sobre la esquina de la pata.</figcaption></figure>
+      <figure><img src="img/org-prototipo.jpg" alt="Prototipos de las patas en verde" loading="lazy"><figcaption>Prototipo de las patas para validar el encaje.</figcaption></figure>
+    </div>
+  </div>
+</div>
+
+<div class="case" id="case-lancha" role="dialog" aria-modal="true" aria-labelledby="t-lancha" hidden>
+  <div class="case-bar"><span class="label">Encargo freelance · 2024</span><button class="close" data-close>← Volver</button></div>
+  <div class="case-body">
+    <div class="case-text">
+      <h2 id="t-lancha">Réplica a escala de lancha</h2>
+      <p class="lede">Un cliente quería tener sus lanchas en miniatura. Partí de fotografías de la embarcación real y entregué dos réplicas listas para exhibir.</p>
+      <section>
+        <h4>Proceso</h4>
+        <ul>
+          <li>Modelado del casco, el interior y las barandas en Blender a partir de fotos de referencia.</li>
+          <li>Casco dividido en secciones para que cupiera en la cama de impresión, con varias iteraciones hasta ajustar proporciones y uniones.</li>
+          <li>Interior con textura de rombos en relieve que imita la tapicería, motor fuera de borda, defensas y barandas como piezas aparte.</li>
+          <li>Gráfica del casco replicada del original y base de exhibición impresa.</li>
+          <li>Dos versiones entregadas: azul con blanco y negra con rojo.</li>
+        </ul>
+      </section>
+      <dl class="specs">
+        <dt>Tipo</dt><dd>Encargo freelance, de referencia real a objeto terminado</dd>
+        <dt>Fabricación</dt><dd>FDM, impresión por secciones y ensamble</dd>
+        <dt>Software</dt><dd>Blender</dd>
+      </dl>
+    </div>
+    <div class="gallery">
+      <figure class="wide"><img src="img/lancha-azul-detalle.jpg" alt="Réplica azul y blanca con motor fuera de borda" loading="lazy"><figcaption>Versión azul y blanca.</figcaption></figure>
+      <figure><img src="img/lancha-real.jpg" alt="La lancha real usada como referencia" loading="lazy"><figcaption>Referencia: la embarcación real.</figcaption></figure>
+      <figure><img src="img/lancha-blender.jpg" alt="Modelo de la lancha en Blender" loading="lazy"><figcaption>Modelado del casco y las barandas en Blender.</figcaption></figure>
+      <figure><img src="img/lancha-cascos.jpg" alt="Dos cascos impresos, uno negro y otro blanco" loading="lazy"><figcaption>Iteraciones del casco.</figcaption></figure>
+      <figure><img src="img/lancha-mano.jpg" alt="Casco negro con interior rojo en la mano" loading="lazy"><figcaption>Interior con textura de tapicería.</figcaption></figure>
+      <figure class="wide"><img src="img/lancha-casco-lateral.jpg" alt="Casco blanco visto de lado mostrando la unión de secciones" loading="lazy"><figcaption>Casco impreso en secciones, vista lateral.</figcaption></figure>
+      <figure><img src="img/lancha-negra.jpg" alt="Réplica negra y roja sobre su base" loading="lazy"><figcaption>Versión negra y roja.</figcaption></figure>
+      <figure><img src="img/lancha-azul.jpg" alt="Réplica azul sobre su base" loading="lazy"><figcaption>Base de exhibición.</figcaption></figure>
+      <figure class="wide"><img src="img/lancha-par.jpg" alt="Las dos réplicas juntas" loading="lazy"><figcaption>Las dos réplicas entregadas.</figcaption></figure>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  var last = null;
+  function openCase(id, push){
+    var el = document.getElementById('case-' + id);
+    if(!el) return;
+    document.querySelectorAll('.case').forEach(function(c){ c.hidden = true; });
+    el.hidden = false; el.scrollTop = 0;
+    document.body.style.overflow = 'hidden';
+    var btn = el.querySelector('[data-close]'); if(btn) btn.focus();
+    if(push) history.replaceState(null, '', '#' + id);
+  }
+  function closeCase(){
+    document.querySelectorAll('.case').forEach(function(c){ c.hidden = true; });
+    document.body.style.overflow = '';
+    if(location.hash) history.replaceState(null, '', location.pathname + location.search);
+    if(last) last.focus();
+  }
+  document.querySelectorAll('[data-case]').forEach(function(b){
+    b.addEventListener('click', function(){ last = b; openCase(b.dataset.case, true); });
+  });
+  document.querySelectorAll('[data-close]').forEach(function(b){ b.addEventListener('click', closeCase); });
+  document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeCase(); });
+  var h = (location.hash || '').slice(1);
+  if(/^(parlante|organizador|lancha)$/.test(h)) openCase(h, false);
+})();
+</script>
+
+</body>
+</html>
